@@ -10,7 +10,6 @@ var MessagesView = {
 
   renderMessage: function(message) {
     // call messageView.render and pass in message
-    console.log(message);
     MessagesView.encodeMessage(message);
     let structuredMessage = MessageView.render(message);
     // append to chats in index.html
@@ -27,13 +26,13 @@ var MessagesView = {
 
   loadMessages: function(data) {
     // itterate through all messages
-    console.log('turtle', this);
-    console.log('i am a hippo', data);
+    Messages.storage = data.results.slice();
     for (var i = 0; i < data.results.length; i++) {
       // call render message for each message
-      console.log('we are hippi', data[i]);
       if (data.results[i].username && data.results[i].text) {
-        MessagesView.renderMessage(data.results[i]);
+        if (data.results[i].username.length < 100 && data.results[i].text.length < 500) {
+          MessagesView.renderMessage(data.results[i]);
+        }
       }
     }
   }

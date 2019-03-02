@@ -4,9 +4,9 @@ var MessageView = {
 
     '<div class="chat">' +
       
-      '<div class="username">' +
+      '<a href="#" class= "userAnchor"><div class="username">' +
         '<%= username %>' +
-      '</div>' +
+      '</div></a>' +
 
       '<div class="message">' +
         '<%= text %>' +
