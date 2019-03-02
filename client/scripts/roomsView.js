@@ -5,24 +5,37 @@ var RoomsView = {
 
   initialize: function() {
     // RoomsView.render();
-    Parse.readAll(RoomsView.render());
+    Parse.readAll(RoomsView.render);
+    RoomsView.$button.on('click', RoomsView.addNewRoom);
   },
 
   render: function(data) {
-    
-    
+    console.log(data);
     for (var i = 0; i < data.results.length; i++) {
-      var aTemplate = RoomsView.createTemplate(data.results[i]);
-      $('select').append(aTemplate);
+      if (data.results[i].roomname){
+        RoomsView.renderRoom(data.results[i].roomname)
+      }
     }
-    
   },
 
-  createTemplate: function(aName) {
-    _.template(
-      '<option value="' + aName + '">' +
-      '<%= username %>' + 
-      '</option>'
-    )
-  }
+  renderRoom: function(roomname) {
+    Messages.roomname = roomname; 
+    if (!Rooms.storage.includes(Messages.roomname)){
+      var aTemplate = RoomsView.createTemplate(Messages);
+      $('select').append(aTemplate);
+      Rooms.storage.push(Messages.roomname);
+    }
+  },
+
+  addNewRoom: function(event) {
+    console.log($('#newRoomName'));
+  },
+
+  createTemplate: _.template(
+
+    '<option value="<%= roomname %>">' +
+    '<%= roomname %>' + 
+    '</option>'
+    
+  )
 };

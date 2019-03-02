@@ -1,4 +1,6 @@
 
 var Messages = {
-  storage: []
+  username: undefined,
+  text: undefined,
+  roomname: undefined
 };

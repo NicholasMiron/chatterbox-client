@@ -25,8 +25,7 @@ var MessagesView = {
   },
 
   loadMessages: function(data) {
-    // itterate through all messages
-    Messages.storage = data.results.slice();
+    // itterate through all messagess
     for (var i = 0; i < data.results.length; i++) {
       // call render message for each message
       if (data.results[i].username && data.results[i].text) {

@@ -14,7 +14,7 @@ var App = {
     MessagesView.initialize();
     Friends.initialize();
     FormView.initialize();
-    // RoomsView.initialize();
+    RoomsView.initialize();
     
     
     // App.loadMessages();
